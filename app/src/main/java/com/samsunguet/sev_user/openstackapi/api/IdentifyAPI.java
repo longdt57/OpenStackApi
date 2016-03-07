@@ -20,11 +20,11 @@ import java.net.URL;
 /**
  * Created by sev_user on 3/7/2016.
  */
-public class OpenStackAPI {
+public class IdentifyAPI {
     String url;
     User user;
 
-    public OpenStackAPI(String url, User user){
+    public IdentifyAPI(String url, User user){
         this.url    = url;
         this.user   = user;
     }
