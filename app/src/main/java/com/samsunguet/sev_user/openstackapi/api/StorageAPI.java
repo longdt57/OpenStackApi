@@ -189,10 +189,38 @@ public class StorageAPI {
 
 
             HttpURLConnection connection = (HttpURLConnection) new URL(user.getStorageUrl()+sourcepath).openConnection();
+            connection.setRequestProperty("X-Auth-Token", user.getToken().getId());
+            connection.setDoOutput(true);
+            connection.setRequestMethod("PUT");
+            OutputStream out = connection.getOutputStream();
+
+            byte[] buff = new byte[1024*5];
+
+            int len;
+            int total = 0;
+            int lastUpdated = 0;
+            int percent = 0;
+            while((len=bufread.read(buff))!=-1){
+                total+= len;
+                out.write(buff, 0, len);
+            }
         } catch (IOException e) {
             MyLog.log(e.toString());
+            return false;
         }
 
+        return true;
+    }
+    public boolean createFolder(String path){
+
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(user.getStorageUrl()+path).openConnection();
+            connection.setRequestProperty("X-Auth-Token", user.getToken().getId());
+            connection.setDoOutput(true);
+            connection.setRequestMethod("PUT");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 }
