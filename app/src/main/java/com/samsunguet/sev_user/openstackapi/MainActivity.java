@@ -12,6 +12,7 @@ import com.samsunguet.sev_user.openstackapi.object.Tenant;
 import com.samsunguet.sev_user.openstackapi.object.Token;
 import com.samsunguet.sev_user.openstackapi.object.User;
 
+import java.net.MalformedURLException;
 
 
 public class MainActivity extends Activity {
@@ -26,10 +27,10 @@ public class MainActivity extends Activity {
         MyLog.log("Start main activity");
 
         Tenant tenant = new Tenant("s2uet");
-        Token token = new Token("12998130227a4f5a9b1bf577957f38e4");
+        Token token = new Token("017c311b8f1343cc8e85f800e9145383");
         User user = new User("long", "abc13579",token, tenant, "http://107.113.190.176:8080/v1/AUTH_579b0354975e4676a547084080449aff");
         //IdentifyAPI requestToken = new IdentifyAPI("http://107.113.190.176:5000/v2.0/tokens", user);
-        //new GetToken().execute(requestToken);
+       // new GetToken().execute(requestToken);
         MyLog.log(user.getToken().getId());
         new GetFoler().execute(new StorageAPI(user));
 
