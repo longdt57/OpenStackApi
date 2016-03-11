@@ -3,6 +3,7 @@
     package="com.samsunguet.sev_user.openstackapi">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
